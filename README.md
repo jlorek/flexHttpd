@@ -1,6 +1,8 @@
 # flexHttpd
 A lightweight http server for Windows IoT (and anything else).
 
+`PM> Install-Package FlexHttpd` 
+
 ## Prepare
 Open your `Package.appxmanifest` and make sure your application has `Internet (Client & Server)` and / or `Private Networks (Client & Server)` capabilities (depending on your needs).
 
