@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Windows.Networking.Sockets;
 using Windows.Storage.Streams;
@@ -15,9 +14,14 @@ namespace FlexHttpd
     {
         private const int BufferSize = 8192;
 
-        private StreamSocketListener _listener;
+        public FlexResponse DefaultResponse { get; set; } = new FlexResponse(FlexHttpStatus.NotFound);
 
         public Dictionary<string, Func<FlexRequest, Task<FlexResponse>>> Get { get; } = new Dictionary<string, Func<FlexRequest, Task<FlexResponse>>>();
+        public Dictionary<string, Func<FlexRequest, Task<FlexResponse>>> Post { get; } = new Dictionary<string, Func<FlexRequest, Task<FlexResponse>>>();
+        public Dictionary<string, Func<FlexRequest, Task<FlexResponse>>> Put { get; } = new Dictionary<string, Func<FlexRequest, Task<FlexResponse>>>();
+        public Dictionary<string, Func<FlexRequest, Task<FlexResponse>>> Delete { get; } = new Dictionary<string, Func<FlexRequest, Task<FlexResponse>>>();
+
+        private StreamSocketListener _listener;
 
         public FlexServer()
         {
@@ -78,43 +82,32 @@ namespace FlexHttpd
 
         private async Task<FlexResponse> ProcessRequest(FlexRequest request)
         {
+            Func<FlexRequest, Task<FlexResponse>> processor = null;
+
             if (request.Method == "GET")
             {
-                Func<FlexRequest, Task<FlexResponse>> processor;
-                if (Get.TryGetValue(request.Url, out processor))
-                {
-                    FlexResponse response = await processor(request);
-                    return response;
-                }
-
-                //foreach (var kvp in Get)
-                //{
-                //    //var result = MatchQueryUrl(kvp.Key, request.Url);
-
-                //    if (Regex.IsMatch(request.Url, kvp.Key))
-                //    {
-                //        FlexResponse response = await kvp.Value(request);
-                //        return response;
-                //    }
-
-                //    // /?(?<myID>[^/]+)/?
-
-                //    //string fo = "/index/show/{id}";
-                //    //string rx = "(?<id>[^/]+)";
-
-                //    //string fo2 = "/index?action={action}&id={id}";
-                //    //string rx2 = "(?<id>[^&/]+)";
-                //}
+                Get.TryGetValue(request.Url, out processor);
+            }
+            else if (request.Method == "POST")
+            {
+                Post.TryGetValue(request.Url, out processor);
+            }
+            else if (request.Method == "PUT")
+            {
+                Put.TryGetValue(request.Url, out processor);
+            }
+            else if (request.Method == "DELETE")
+            {
+                Delete.TryGetValue(request.Url, out processor);
             }
 
-            return new FlexResponse(FlexHttpStatus.NotFound);
-        }
+            if (processor != null)
+            {
+                FlexResponse response = await processor(request);
+                return response;
+            }
 
-        private Dictionary<string, string> MatchQueryUrl(string route, string query)
-        {
-            route = "^" + route;
-
-            return null;
+            return DefaultResponse;
         }
     }
 }

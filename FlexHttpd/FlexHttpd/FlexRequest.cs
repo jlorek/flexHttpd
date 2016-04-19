@@ -13,7 +13,7 @@ namespace FlexHttpd
 
         public string Url { get; set; }
 
-        public string Content { get; set; }
+        public string Body { get; set; }
 
         public string Protocol { get; private set; }
 
@@ -54,7 +54,7 @@ namespace FlexHttpd
                         {
                             contentBuilder.AppendLine(linesRaw[j]);
                         }
-                        httpRequest.Content = contentBuilder.ToString();
+                        httpRequest.Body = contentBuilder.ToString();
                         break;
                     }
 
