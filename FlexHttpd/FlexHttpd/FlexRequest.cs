@@ -81,7 +81,6 @@ namespace FlexHttpd
             var matches = Regex.Matches(queryString, @"&?([^\=]+)=([^&]+)");
             foreach (Match match in matches)
             {
-                //byteFAKK
                 string key = match.Groups[1].Value;
                 string value = match.Groups[2].Value;
                 queryParameters[key] = value;

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -10,7 +9,7 @@ using Windows.Storage.Streams;
 
 namespace FlexHttpd
 {
-    public class FlexServer // : IBackgroundTask
+    public class FlexServer
     {
         private const int BufferSize = 8192;
 
@@ -63,7 +62,6 @@ namespace FlexHttpd
             FlexRequest request = FlexRequest.TryParse(requestStr);
             if (request == null)
             {
-                //await socket.CancelIOAsync();
                 return;
             }
 
@@ -76,8 +74,6 @@ namespace FlexHttpd
                     await responseStream.FlushAsync();
                 }
             }
-
-            Debug.WriteLine(requestStr);
         }
 
         private async Task<FlexResponse> ProcessRequest(FlexRequest request)
