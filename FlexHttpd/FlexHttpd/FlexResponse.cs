@@ -18,12 +18,6 @@ namespace FlexHttpd
             Status = status;
         }
 
-        public FlexResponse(FlexHttpStatus status, string body)
-        {
-            Status = status;
-            Body = body;
-        }
-
         public async Task WriteToStream(Stream response)
         {
             byte[] bodyArray = Encoding.UTF8.GetBytes(Body);
