@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexHttpd", "FlexHttpd\FlexHttpd.csproj", "{D5916C93-D6C2-48B6-A367-E852C941B49B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlexHttpd.Test", "FlexHttpd.Test\FlexHttpd.Test.csproj", "{2312E872-9A86-4B2D-8DE0-86AC96DC2212}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,26 @@ Global
 		{D5916C93-D6C2-48B6-A367-E852C941B49B}.Release|x64.Build.0 = Release|x64
 		{D5916C93-D6C2-48B6-A367-E852C941B49B}.Release|x86.ActiveCfg = Release|x86
 		{D5916C93-D6C2-48B6-A367-E852C941B49B}.Release|x86.Build.0 = Release|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|ARM.ActiveCfg = Debug|ARM
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|ARM.Build.0 = Debug|ARM
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|ARM.Deploy.0 = Debug|ARM
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|x64.ActiveCfg = Debug|x64
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|x64.Build.0 = Debug|x64
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|x64.Deploy.0 = Debug|x64
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|x86.ActiveCfg = Debug|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|x86.Build.0 = Debug|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Debug|x86.Deploy.0 = Debug|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|Any CPU.ActiveCfg = Release|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|ARM.ActiveCfg = Release|ARM
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|ARM.Build.0 = Release|ARM
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|ARM.Deploy.0 = Release|ARM
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|x64.ActiveCfg = Release|x64
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|x64.Build.0 = Release|x64
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|x64.Deploy.0 = Release|x64
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|x86.ActiveCfg = Release|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|x86.Build.0 = Release|x86
+		{2312E872-9A86-4B2D-8DE0-86AC96DC2212}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
